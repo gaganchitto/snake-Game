@@ -96,7 +96,7 @@ def gameloop():
                         exit_button=True
         else:
             for event in pygame.event.get():
-                if event.type == pygame.QUIT:  # ye fuction kya karega ki jab aap upper close ka button dabay toh vo band ho jaay
+                if event.type == pygame.QUIT:  
                     exit_button = True
                 if event.type==pygame.KEYDOWN:
                     if event.key==pygame.K_ESCAPE:
@@ -110,7 +110,7 @@ def gameloop():
                         velocity_y=0
 
                     if event.key==pygame.K_UP:
-                        velocity_y=-10 #ye isme posivive y direction neeche hota h
+                        velocity_y=-10 
                         velocity_x=0
 
                     if event.key==pygame.K_DOWN:
@@ -120,15 +120,15 @@ def gameloop():
             x_cord=x_cord+velocity_x
             y_cord=y_cord+velocity_y
 
-            if abs(x_cord-food_x)<7 and abs(y_cord-food_y)<7: #ye ab snake exactly to overlap karega ni food pr toh isly absolute value lenge
+            if abs(x_cord-food_x)<7 and abs(y_cord-food_y)<7: 
                 score+=10
-                food_x = random.randint(10, width / 2)  # /2 s vo thoda center ki taraf rahega
+                food_x = random.randint(10, width / 2) 
                 food_y = random.randint(10, heigth / 2)
                 snk_length+=3
                 if score>int(hiscore):
                     hiscore=score
 
-            gameWindow.fill(white)  # jab bhi ham esa kuch karte h toh hamko display update karna hota h
+            gameWindow.fill(white)  
             screen_score("Score :"+str(score)+"  Hiscore :"+str(hiscore),red,5,5)
             pygame.draw.rect(gameWindow, red, [food_x, food_y, snake_size, snake_size])
 
@@ -139,13 +139,12 @@ def gameloop():
             if len(snk_list) >snk_length:
                 del snk_list[0]
 
-            if head in snk_list[:-1]: #[:-1] matlab saare elements execpt the last one
+            if head in snk_list[:-1]: 
                 game_over=True
 
             if x_cord<0 or x_cord>width or y_cord<0 or y_cord>heigth:
                 game_over=True
-            # ab ham snake banayneg uske liy rectanagle banana h
-            # pygame.draw.rect(gameWindow, black, [x_cord, y_cord, snake_size, snake_size]) #iski jagah ham ek fuction banaynge jo ki snake plotkarega or size badayga
+            
 
             plot_snake(gameWindow,black,snk_list,snake_size)
 
