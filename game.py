@@ -12,17 +12,17 @@ red = (255, 0, 0)
 black = (0, 0, 0)
 exit_button = False
 gameWindow=pygame.display.set_mode((width,heigth))
-pygame.display.set_caption("Saaanp")
+pygame.display.set_caption("Snake-Game")
 
 
 
 
 
-clock=pygame.time.Clock() #hamko usko time k sath velocity s badana h isly ye clock diya
+clock=pygame.time.Clock()
 font=pygame.font.SysFont(None,50)
 def screen_score(text,color,x,y):
     screeen_text=font.render(text,True,color)
-    gameWindow.blit(screeen_text,[x,y]) #ye window ko update kar dega
+    gameWindow.blit(screeen_text,[x,y]) # Window Update
 
 def plot_snake(gameWindow,color,snk_list,snake_size):
     for x,y in snk_list:
@@ -35,7 +35,7 @@ def welcome():
         screen_score("Swagat h aapka Saanp ki duniya m",black,width/5,heigth/2.5)
         screen_score("Khela Shuru karne k liy Spacebar Dabaiy", black, width / 6, heigth / 2)
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:  # ye fuction kya karega ki jab aap upper close ka button dabay toh vo band ho jaay
+            if event.type == pygame.QUIT:  
                 exit_button = True
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
@@ -55,9 +55,9 @@ def gameloop():
     width = 900
     heigth = 700
     fps = 30
-    velocity_x = 0  # ham isko initial 0 karenge kuki jab apn input de tab ye change honi chaiy
+    velocity_x = 0  
     velocity_y = 0
-    food_x = random.randint(10, width / 2)  # /2 s vo thoda center ki taraf rahega
+    food_x = random.randint(10, width / 2) 
     food_y = random.randint(10, heigth / 2)
     score = 0
 
@@ -87,7 +87,7 @@ def gameloop():
             gameWindow.fill(white)
             screen_score("Game Over, Press Enter to continue",red,width/5.5,heigth/2)
             for event in pygame.event.get():
-                if event.type == pygame.QUIT:  # ye fuction kya karega ki jab aap upper close ka button dabay toh vo band ho jaay
+                if event.type == pygame.QUIT:  # Enable Close Button
                     exit_button = True
                 if event.type==pygame.KEYDOWN:
                     if event.key==pygame.K_RETURN:
