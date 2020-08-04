@@ -1,0 +1,4 @@
+Required Modules to Install :-
+
+1) PYGAME - pip install pygame
+2) RANDOM - pip install random
